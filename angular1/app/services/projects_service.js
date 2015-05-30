@@ -13,13 +13,3 @@ projectsService.factory('projectsService', ['$resource',
       });
     }]
 );
-
-var projectsIndexService = angular.module('projectsIndexService', ['ngResource']);
-
-projectsIndexService.factory('projectsIndexService', ['$resource',
-    function ($resource) {
-      return $resource('http://localhost:8080/rails/projects.json', {}, {
-        get: {method: "GET", cache: false, isArray: true}
-      })
-    }]
-);

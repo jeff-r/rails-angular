@@ -9,10 +9,9 @@ angular.module('myApp.dashboard', ['ngRoute', 'projectsService'])
     });
   }])
 
-  .controller('DashboardController', ['$scope', '$location', '$http', 'projectsIndexService', function ($scope, $location, $http, projectsIndexService) {
-    $scope.message = "Woo hoo!";
-    $scope.topping = ['prosciutto', 'arugula', 'summer squash'];
-    projectsIndexService.get({},
+  .controller('DashboardController', ['$scope', '$location', '$http', 'projectsService', function ($scope, $location, $http, projectsService) {
+
+    projectsService.query({},
       function success(response) {
         console.log("success: " + JSON.stringify(response));
         $scope.projectsList = response;

@@ -6,7 +6,7 @@ var helloWorldApp = angular.module('myApp', [
   'myApp.projectsView',
   'myApp.view2',
   'myApp.version',
-  'projectsIndexService'
+  'projectsService'
 ]).
   config(['$routeProvider', function ($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/view1'});
