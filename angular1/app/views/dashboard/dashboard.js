@@ -23,6 +23,13 @@ angular.module('myApp.dashboard', ['ngRoute', 'projectsService'])
       )
     };
 
+    $scope.deleteProject = function(project) {
+      console.log("delete");
+      project.$delete({id: project.id}, function() {
+        $scope.loadData();
+      });
+    };
+
     $scope.addProject = function() {
       projectsService.save({name: $scope.newProjectName},
         function() {

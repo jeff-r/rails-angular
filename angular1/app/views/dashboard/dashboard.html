@@ -1,10 +1,12 @@
 <p>Jeff's fine list app</p>
 
-<ul>
-  <div ng-repeat="project in projectsList">
-    <li><a href="#/projects/{{project.id}}">{{project.name}}</a></li>
-  </div>
-</ul>
+<table>
+  <tr ng-repeat="project in projectsList">
+    <td><a href="#/projects/{{project.id}}">{{project.name}}</a></td>
+    <td><a ng-click="deleteProject(project)">delete</a> </td>
+  </tr>
+</table>
+
 
 
 <p>
