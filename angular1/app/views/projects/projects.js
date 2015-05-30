@@ -26,6 +26,7 @@ angular.module('myApp.projectsView', ['ngRoute', 'projectsService'])
     $scope.deleteProject = function() {
       console.log("Deleting project " + projectId);
       $scope.project.$delete({id: $scope.project.id});
+      $location.path("/dashboard");
     }
 
 

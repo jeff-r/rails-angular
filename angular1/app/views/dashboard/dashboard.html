@@ -1,7 +1,14 @@
 <p>Jeff's fine list app</p>
 
 <ul>
-    <div ng-repeat="project in projectsList">
-        <li><a href="#/projects/{{project.id}}">{{project.name}}</a></li>
-    </div>
+  <div ng-repeat="project in projectsList">
+    <li><a href="#/projects/{{project.id}}">{{project.name}}</a></li>
+  </div>
 </ul>
+
+
+<p>
+  <form ng-submit="addProject()">
+    <input type="text" ng-model="newProjectName">
+  </form>
+</p>

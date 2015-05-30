@@ -9,7 +9,19 @@ angular.module('myApp.dashboard', ['ngRoute', 'projectsService'])
     });
   }])
 
-  .controller('DashboardController', ['$scope', '$location', '$http', 'projectsService', function ($scope, $location, $http, projectsService) {
+  .controller('DashboardController', ['$scope', '$location', '$http', '$route', 'projectsService', function ($scope, $location, $http, $route, projectsService) {
+
+    $scope.addProject = function() {
+      projectsService.save({name: $scope.newProjectName},
+        function() {
+          console.log("success!");
+          $route.reload();
+        },
+      function() {
+        console.log("Failure!");
+      }
+      );
+    };
 
     projectsService.query({},
       function success(response) {
