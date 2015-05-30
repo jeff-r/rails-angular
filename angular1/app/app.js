@@ -2,7 +2,7 @@
 
 var helloWorldApp = angular.module('myApp', [
   'ngRoute',
-  'myApp.view1',
+  'myApp.dashboard',
   'myApp.projectsView',
   'myApp.view2',
   'myApp.version',

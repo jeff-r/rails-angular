@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module('myApp.view1', ['ngRoute', 'projectsService'])
+angular.module('myApp.dashboard', ['ngRoute', 'projectsService'])
 
   .config(['$routeProvider', function ($routeProvider) {
-    $routeProvider.when('/view1', {
-      templateUrl: '/views/view1/view1.html',
-      controller: 'View1Ctrl'
+    $routeProvider.when('/dashboard', {
+      templateUrl: '/views/dashboard/dashboard.html',
+      controller: 'DashboardController'
     });
   }])
 
-  .controller('View1Ctrl', ['$scope', '$location', '$http', 'projectsIndexService', function ($scope, $location, $http, projectsIndexService) {
+  .controller('DashboardController', ['$scope', '$location', '$http', 'projectsIndexService', function ($scope, $location, $http, projectsIndexService) {
     $scope.message = "Woo hoo!";
     $scope.topping = ['prosciutto', 'arugula', 'summer squash'];
     projectsIndexService.get({},
