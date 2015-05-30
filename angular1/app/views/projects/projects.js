@@ -13,8 +13,16 @@ angular.module('myApp.projectsView', ['ngRoute', 'projectsService'])
     });
   }])
 
-  .controller('ProjectsController', ['$scope', '$routeParams', '$location', '$http', 'projectsService', function ($scope, $routeParams, $location, $http, projectsService) {
+  .controller('ProjectsController', ['$scope', '$routeParams', '$location', '$http', 'projectsService',
+                                    function ($scope, $routeParams, $location, $http, projectsService) {
     var projectId = $routeParams.id;
+
+    $scope.updateProject = function() {
+      console.log("Updating project " + projectId);
+      $scope.project.$update({id: $scope.project.id, name: $scope.project.name});
+      console.log("Updating project " + projectId);
+    };
+
     projectsService.get({id: projectId},
       function success(response) {
         console.log("success: " + JSON.stringify(response));

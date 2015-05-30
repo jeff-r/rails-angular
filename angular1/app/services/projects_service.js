@@ -8,9 +8,9 @@ var projectsService = angular.module('projectsService', ['ngResource']);
 
 projectsService.factory('projectsService', ['$resource',
     function ($resource) {
-      return $resource('http://localhost:8080/rails/projects/:id.json', {}, {
-        get: {method: "GET", cache: false, isArray: false}
-      })
+      return $resource('http://localhost:8080/rails/projects/:id.json', {id: '@_id'}, {
+        update: {method: "PUT"}
+      });
     }]
 );
 
