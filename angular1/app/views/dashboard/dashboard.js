@@ -11,11 +11,23 @@ angular.module('myApp.dashboard', ['ngRoute', 'projectsService'])
 
   .controller('DashboardController', ['$scope', '$location', '$http', '$route', 'projectsService', function ($scope, $location, $http, $route, projectsService) {
 
+    $scope.loadData = function() {
+      projectsService.query({},
+        function success(response) {
+          console.log("success: " + JSON.stringify(response));
+          $scope.projectsList = response;
+        },
+        function error(errorResponse) {
+          console.log("error: " + JSON.stringify(errorResponse));
+        }
+      )
+    };
+
     $scope.addProject = function() {
       projectsService.save({name: $scope.newProjectName},
         function() {
           console.log("success!");
-          $route.reload();
+          $scope.loadData();
         },
       function() {
         console.log("Failure!");
@@ -23,13 +35,5 @@ angular.module('myApp.dashboard', ['ngRoute', 'projectsService'])
       );
     };
 
-    projectsService.query({},
-      function success(response) {
-        console.log("success: " + JSON.stringify(response));
-        $scope.projectsList = response;
-      },
-      function error(errorResponse) {
-        console.log("error: " + JSON.stringify(errorResponse));
-      }
-    )
+    $scope.loadData();
   }]);
