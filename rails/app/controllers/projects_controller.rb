@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   skip_before_filter :verify_authenticity_token
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /projects
   # GET /projects.json
